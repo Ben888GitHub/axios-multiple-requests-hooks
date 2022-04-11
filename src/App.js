@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import Example1 from './examples/Example1';
+import Example2 from './examples/Example2';
+import Example3 from './examples/Example3';
+import ExampleHooks from './examples/ExampleHooks';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<h1>Axios Multiple Requests at once</h1>
+			<br />
+			{/* <Example1 /> */}
+			<br />
+			{/* <Example2 /> */}
+			{/* <Example3 /> */}
+			<ExampleHooks />
+		</div>
+	);
 }
 
 export default App;
