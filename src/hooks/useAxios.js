@@ -11,27 +11,30 @@ export const useAxios = () => {
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
-	const getAllData = () => {
-		setIsLoading(true);
-		axios
-			.all([health, vue].map((endpoint) => axios.get(endpoint)))
-			.then(
-				axios.spread((health, vue) => {
-					setIsLoading(false);
-					setData({
-						...data,
-						health: health.data.story,
-						vue: vue.data.story
-					});
-				})
-			)
-			.catch((error) => {
-				setError(error);
-			});
+	const getDataWithPromiseAll = async () => {
+		try {
+			const healthData = axios.get(health);
+			const vueData = axios.get(vue);
+
+			const [healthResult, vueResult] = await Promise.all([
+				healthData,
+				vueData
+			]);
+			console.log(healthResult.data);
+			console.log(vueResult.data);
+			setIsLoading(false);
+			setData((currentData) => ({
+				...currentData,
+				health: healthResult.data.story,
+				vue: vueResult.data.story
+			}));
+		} catch (error) {
+			setError(error);
+		}
 	};
 
 	useEffect(() => {
-		getAllData();
+		getDataWithPromiseAll();
 	}, []);
 
 	return { data, error, isLoading };
