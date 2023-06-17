@@ -1,1 +1,3 @@
 https://blog.logrocket.com/using-axios-all-make-concurrent-requests/
+
+https://blog.bitsrc.io/api-call-in-react-using-axios-handling-complicated-scenarios-befff1655abc
